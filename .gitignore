@@ -1,6 +1,8 @@
 *~
 a.out
+*.o
 01.scratch/HTTPServer
 01.scratch/TCPServer
 01.scratch/TCPClient
 02.simple/HTTPSimple
+03.pico/PICOServer
