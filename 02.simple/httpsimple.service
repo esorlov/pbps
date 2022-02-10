@@ -1,0 +1,12 @@
+[Unit]
+Description=Simple WWW Service
+After=network.target 
+
+[Service]
+ExecStart=/usr/local/sbin/HTTPSimple -p 8080 -r /var/www/simpleweb/webroot
+KillMode=process
+User=httpsimple
+Group=httpsimple
+
+[Install]
+WantedBy=multi-user.target
