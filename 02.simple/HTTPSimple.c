@@ -12,6 +12,8 @@ to start a server at port 50000 with root directory as "/home"
 $./a.out -r /home/shadyabhi
 starts the server at port 10000 with ROOT as /home/shadyabhi
 
+Digest Auth Demo (E.S.Orlov)
+
 */
 
 #include<stdio.h>
@@ -149,7 +151,9 @@ void get_req_resource(const char* path, int client, char* auth_data)
 		if (auth_data == NULL)
 		{
 			send(client, "HTTP/1.0 401 Unauthorized\n", 26, 0);
-			send(client, "WWW-Authenticate: Basic realm=\"Realm\"\n",38,0);
+			send(client, "WWW-Authenticate: Digest realm=\"DigestRealm\", \
+					nonce=\"dcd98b7102dd2f0e8b11d0f600bfb0c093\", \
+					opaque=\"5ccc069c403ebaf9f0171e9517f40e41\"\n",129,0); //45+42+42
 			return;
 		} else
 			printf("Got Auth...%s\n", auth_data);

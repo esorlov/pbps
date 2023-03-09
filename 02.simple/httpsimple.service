@@ -3,7 +3,7 @@ Description=Simple WWW Service
 After=network.target 
 
 [Service]
-ExecStart=/usr/local/sbin/HTTPSimple -p 8080 -r /var/www/simpleweb/webroot
+ExecStart=/usr/local/sbin/HTTPSimple -p 8000 -r /var/www/simpleweb/webroot
 KillMode=process
 User=httpsimple
 Group=httpsimple
