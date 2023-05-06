@@ -7,3 +7,6 @@ a.out
 02.simple/HTTPSimple
 03.pico/PICOServer
 04.pico-foxweb/PICOFoxweb
+chroot/nochroot
+chroot/chroot
+chroot/pid
