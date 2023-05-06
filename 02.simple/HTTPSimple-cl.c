@@ -158,6 +158,8 @@ static SSL_CTX *get_server_context(const char *ca_pem, const char *cert_pem, con
 		SSL_CTX_free(ctx);
 		return NULL;
 	}
+	/* Загрузка CA-файла, который будет использоваться для проверки сертификатов клиента */
+	SSL_CTX_set_client_CA_list(ctx, SSL_load_client_CA_file(ca_pem));
 	/* Установка серверного сертификата, подписанного CA */
 	if (SSL_CTX_use_certificate_file(ctx, cert_pem, SSL_FILETYPE_PEM) != 1) {
 		fprintf(stderr, "Не могу назначить сертификат сервера\n");
@@ -178,6 +180,8 @@ static SSL_CTX *get_server_context(const char *ca_pem, const char *cert_pem, con
 	}
 	/* Режим выполнения операций чтения-записи только после успешного (пере)согласования параметров */
 	SSL_CTX_set_mode(ctx, SSL_MODE_AUTO_RETRY);
+	/* Клиентская аутентификация по сертификатам */
+	SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, NULL);
 	/* Принимаем только сертифкаты подписанные самим удостоверяющим центром */
 	SSL_CTX_set_verify_depth(ctx, 1);
 	/* Возвращаем контекст */

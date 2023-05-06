@@ -5,5 +5,9 @@ a.out
 01.scratch/TCPServer
 01.scratch/TCPClient
 02.simple/HTTPSimple
+02.simple/HTTPSimple-cl
+02.simple/keys/
 03.pico/PICOServer
 04.pico-foxweb/PICOFoxweb
+ssltls/
+chroot/
